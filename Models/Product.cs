@@ -1,5 +1,9 @@
-﻿namespace webapi_fluentvalidation.Models
+﻿using FluentValidation.Attributes;
+using webapi_fluentvalidation.Validators;
+
+namespace webapi_fluentvalidation.Models
 {
+    [Validator(typeof(ProductValidator))]
     public class Product
     {
         public int Id { get; set; }
