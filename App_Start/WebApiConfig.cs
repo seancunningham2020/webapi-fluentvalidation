@@ -1,6 +1,7 @@
 ﻿using FluentValidation.WebApi;
 using System.Web.Http;
 using webapi_fluentvalidation.ActionFilters;
+using webapi_fluentvalidation.Handlers;
 
 namespace webapi_fluentvalidation
 {
@@ -9,8 +10,8 @@ namespace webapi_fluentvalidation
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
-            FluentValidationModelValidatorProvider.Configure(config);
             config.Filters.Add(new ValidateModelStateFilter());
+            config.MessageHandlers.Add(new ResponseWrappingHandler());
 
             // Web API routes
             config.MapHttpAttributeRoutes();
@@ -20,6 +21,8 @@ namespace webapi_fluentvalidation
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            FluentValidationModelValidatorProvider.Configure(config);
         }
     }
 }

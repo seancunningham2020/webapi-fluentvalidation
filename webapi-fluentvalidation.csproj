@@ -108,7 +108,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\ResponseWrappingHandler.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\ResponseContainer.cs" />
     <Compile Include="Persistence\Domain\IProductDataSource.cs" />
     <Compile Include="Persistence\Domain\ProductDataSource.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
